@@ -73,8 +73,10 @@ h1{
 }
 
 .itemStyle button{
-    padding: 8px;
+    padding: 2px;
     margin: 10px;
+    background-color: crimson;
+    border: none;
 }
 
 
