@@ -9,6 +9,8 @@ const input = document.querySelector('input');
 const div = document.querySelector('.todoList');
 
 
+
+
 form.addEventListener('submit' , e =>{
     e.preventDefault();
 
@@ -27,9 +29,13 @@ function addItemToDom(id , item){
     const element = document.createElement('div');
 
     element.setAttribute('item-id' , id);
+    element.classList.add('itemStyle')
     
-    element.innerText = item;
-
+    element.innerHTML = `
+        <input type="checkbox">
+        <p>${item}</p>
+        <button>d</button>
+    `
     div.appendChild(element);   
 }
 
