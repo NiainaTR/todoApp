@@ -1,83 +1,301 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  background-color: #ece6e6b8;
 }
 
-body{
+header{
     width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    height: 70px;
+    background: #fff;
+    text-align: center;
 }
 
 h1{
+    letter-spacing: 10px;
+}
+header .logo .menu-icon {
     position: absolute;
-    top: 20px;
+    top: 15px;
+    left: 5px;
+    color: #333;
+    font-size: 40px;
+    margin-left: 20px;
+    cursor: pointer;
+    z-index: 10;
 }
 
-.box-container{
+.hidden-btn{
     position: absolute;
-    top: 100px;
-    width: 60%;
-    height: auto;
-    background-color: #f1f1f1;
-    padding: 20px;
+    top: 15px;
+    left: 5px;
+    color: #333;
+    font-size: 40px;
+    margin-left: 20px;
+    cursor: pointer;
+    z-index: 0;
+}
+
+
+header .title{
+    position: relative;
+    top: 10px;
+}
+
+nav .sidebar{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 260px;
+    padding: 20px 0;
+    background-color: #ffffff6d;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+}
+
+nav.open .sidebar {
+    left: 0;
+}
+.sidebar .sidebar-content {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 16px;
+}
+.sidebar-content .list {
+    list-style: none;
+}
+  
+.list .nav-link {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    padding: 14px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .lists .nav-link:hover {
+    background-color: #4070f4;
+  }
+  .lists .nav-link:hover {
+    background-color: #4070f4;
+  }
+  
+  .nav-link .icon {
+    margin-right: 14px;
+    font-size: 20px;
+    color: #707070;
+  }
+  .nav-link .link {
+    font-size: 16px;
+    color: #707070;
+    font-weight: 400;
+  }
+.lists .nav-link:hover .icon,
+.lists .nav-link:hover .link {
+    color: #fff;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 1000vh;
+    width: 200%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+    opacity: 1;
+    left: 260px;
+    pointer-events: auto;
+}
+
+main{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 150px 1fr;
+}
+
+main .add-todo{
+    width: 100%;
+    display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.area-input{
-    width: 100%;
-    height: 50px;
-    margin: 20px;
-
+main .add-todo .type-todo{
+    margin-left: 40px;    
+    padding: 20px;
 }
 
-.area-input input{
-    width: 30vw;
-    height: 5vh;
+main .add-todo .type-todo i{
+    padding: 12px 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #ffffff;
+    background-color: #4070f4;
+    box-shadow: 1px 1px 5px #333;
 }
-.area-input button{
-    width: 10vw;
-    height: 5vh;   
-    margin-left: 20px;
+
+
+main .add-todo .type-todo span{
+    background-color: #ffffffc8;
+    font-size: 20px;
+    padding: 8px 10px;
+    font-weight: bolder;
+    box-shadow: 1px 1px 1px #333;
+}
+ 
+
+
+main .add-todo .input-control form{
+    width: 500px;
+    height: 40px;
+    margin-right: 80px;
     border-radius: 5px;
-    background-color: #8ec5fc;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0px 1px 10px #333;
 }
-.todoList{
+
+.input-control form input {
     width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    border: none;
+    color: #000;
+    background-color:  #ffffff;
+}
+.input-control form button{
+    padding: 14px 20px;
+    background-color: #4070f4;
+    border: none;
+    outline: none;
+    border-radius: 0px 5px 5px 0px; 
+}
+
+main .container-todo-list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    min-height: 100vh;    
+}
+
+main .container-todo-list .todo-list{
+    margin: 1vw 5vh;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px #333;
+    background-color: #ffffff;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+main .container-todo-list .todo-list h3{
+    width: 100%;
+    height: 100px;
+    border-radius: 20px;
+    background-color: #4070f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    letter-spacing: 5px;
 }
 
 .itemStyle{
-    width: 80%;
-    height: 45px;
-    margin-top: 10px;
-    background-color: aqua;        
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    width: 300px;
+    padding: 5px;
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color: #4e749cb8;
+    word-wrap: break-word;
 }
-
-.itemStyle input{
-    margin: 10px;
+.itemStyle p{
+    margin-left: 20px;
+    font-size: 25px;
+    font-weight: 800;
+    color: #fff;
+    text-transform: capitalize;
+}
+.itemStyle span{
+    color: #4f4b4b;
+    margin-left: 20px;
 }
 
 .itemStyle button{
-    padding: 2px;
-    margin: 10px;
-    background-color: crimson;
+    padding: 10px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 5px;
     border: none;
 }
 
+.itemStyle button:hover{
+    background-color: red;
+}
+
+@media screen and (max-width:810px) {
+    main .add-todo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }    
+    main .add-todo .input-control{
+        margin: 10px 0px 30px 30px;
+        max-width: 400px;
+    }
+
+    main .container-todo-list{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    main .container-todo-list .todo-list{
+        max-width: 450px;
+        min-height: 90vh;
+        margin: 5vw 5vh;
+        border-radius: 20px;
+        box-shadow: 1px 1px 5px #333;
+        background-color: #ffffff;
+        overflow: auto;
+    }   
+    
+    .itemStyle{
+        width: 400px;
+        height: 70px;
+        background-color: #4e749cb8;
+        margin-top: 30px;
+        border-radius: 5px;
+    }
+
+    .itemStyle button{
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: none;
+    }
+}
 
 
